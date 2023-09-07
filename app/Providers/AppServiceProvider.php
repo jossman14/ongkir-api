@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\ProvinceRepository;
+use App\Interfaces\ProvinceInterface;
+use App\Repositories\CityRepository;
+use App\Interfaces\CityInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ProvinceInterface::class, ProvinceRepository::class);
+        $this->app->bind(CityInterface::class, CityRepository::class);
     }
 
     /**

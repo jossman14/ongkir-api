@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'rajaongkir' => [
+        'key' => env('RAJAONGKIR_API_KEY'),
+        'base_uri' => env('RAJAONGKIR_API_URI'),
+        // 'base_uri' => 'https://api.rajaongkir.com/starter/',
+    ],
 
 ];
