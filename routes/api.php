@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,14 +17,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+
+
+
+Route::post('login', [LoginController::class, 'login'])->middleware('throttle.failed.logins')->name('login');;
+
+Route::group(['middleware' => ['auth.jwt','api']], function() {
+
+    Route::controller(LoginController::class)->group(function () {
+        Route::post('register', 'register');
+        Route::post('logout', 'logout');
+        Route::post('refresh', 'refresh');
+    });
+
+    Route::controller(ProvinceController::class)->group(function () {
+        Route::get('search/provinces', 'index');
+        Route::get('search/provinces/{id}', 'show');
+    });
+
+    Route::controller(CityController::class)->group(function () {
+        Route::get('search/cities', 'index');
+        Route::get('search/cities/{id}', 'show');
+    });
+
 });
-
-use App\Http\Controllers\ProvinceController;
-use App\Http\Controllers\CityController;
-
-Route::get('search/provinces', [ProvinceController::class, 'index']); // Mengambil semua provinsi
-Route::get('search/provinces/{id}', [ProvinceController::class, 'show']);
-Route::get('search/city', [CityController::class, 'index']); // Mengambil semua provinsi
-Route::get('search/city/{id}', [CityController::class, 'show']);
