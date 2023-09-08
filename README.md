@@ -1,4 +1,6 @@
 
+# Implementasi Raja Ongkir API
+
 Implementasi Raja Ongkir API paket starter untuk fetch data kota dan provinsi.
 
   
@@ -33,6 +35,8 @@ Implementasi Raja Ongkir API paket starter untuk fetch data kota dan provinsi.
 
 7. Jalankan `php artisan fetch:rajaongkir_prov_city` untuk mengambil data kota dan provinsi dari API Raja Ongkir.
 
+8. Jalankan `php artisan jwt:secret` untuk generate key JWT pada `.env`
+
   
 
 ## Setting ENV
@@ -45,11 +49,11 @@ Pastikan Anda memiliki konfigurasi berikut di berkas `.env` Anda:
 
 ```makefile
 
-RAJAONGKIR_API_KEY=eb4d8e9078c39a67c1e856742eb27c38
+RAJAONGKIR_API_KEY=<token anda>
 
 RAJAONGKIR_API_URI=https://api.rajaongkir.com/starter/
 
-JWT_SECRET=KK7jQpdMGZ78wtZpvE2wlqz5q6veIhE7o16vadPDrU9oHSh696emDGLwA6yi4XkL
+JWT_SECRET=<key jwt>
 ```
 
 ## Akun Dummy
